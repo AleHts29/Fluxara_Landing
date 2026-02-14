@@ -1,60 +1,80 @@
-import { Code, Workflow, Bot, Share2 } from 'lucide-react';
+import { Code, Workflow, Bot, Share2, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SpotlightCard from './ui/SpotlightCard';
 
 const solutions = [
     {
         icon: Code,
         title: "Custom Software",
         desc: "Bespoke platforms designed for your unique operational logic.",
+        className: "md:col-span-2",
     },
     {
         icon: Workflow,
         title: "Intelligent Automation",
-        desc: "Self-correcting workflows that run 24/7 without human oversight.",
+        desc: "Self-correcting workflows that run 24/7.",
+        className: "md:col-span-1",
     },
     {
         icon: Bot,
         title: "AI Integration",
         desc: "Injecting LLMs into your stack to unlock predictive insights.",
+        className: "md:col-span-1",
     },
     {
         icon: Share2,
         title: "System Unification",
         desc: "Connecting disparate tools into one cohesive ecosystem.",
+        className: "md:col-span-2",
     }
 ];
 
 const Services = () => {
     return (
         <div className="w-full max-w-7xl mx-auto px-6 py-32">
-            <div className="mb-20">
-                <h2 className="text-4xl md:text-5xl font-bold text-primary-dark dark:text-white mb-6 transition-colors">Our Solutions</h2>
-                <p className="text-lg text-primary-dark/70 dark:text-primary-light/60 max-w-xl transition-colors">
-                    We don't just write code. We architect systems that scale with your ambition.
-                </p>
+            <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <h2 className="text-4xl md:text-5xl font-bold text-primary-dark dark:text-white mb-6 transition-colors">
+                        Our Products
+                    </h2>
+                    <p className="text-lg text-primary-dark/70 dark:text-primary-light/60 max-w-xl transition-colors">
+                        Architected for scale. Engineered for impact.
+                    </p>
+                </div>
+                <div className="hidden md:block w-32 h-[1px] bg-gradient-to-r from-transparent via-accent-pop to-transparent opacity-50 mb-4"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {solutions.map((s, idx) => (
                     <motion.div
+                        key={idx}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: idx * 0.1 }}
-                        key={idx}
-                        className="group relative p-10 rounded-3xl bg-white border border-primary-dark/5 shadow-xl dark:shadow-none dark:bg-white/[0.03] dark:border-white/10 hover:border-accent-pop/50 dark:hover:border-accent-pop/50 dark:hover:bg-accent-pop/[0.05] transition-all duration-500 overflow-hidden"
+                        className={s.className}
                     >
-                        {/* Hover Gradient Bloom */}
-                        <div className="absolute -right-20 -top-20 w-64 h-64 bg-accent-pop/10 dark:bg-accent-pop/20 rounded-full blur-3xl group-hover:opacity-100 opacity-0 transition-opacity duration-700 pointer-events-none"></div>
+                        <SpotlightCard className="h-full p-8 md:p-10 group">
 
-                        <div className="relative z-10 mb-8">
-                            <div className="w-14 h-14 rounded-2xl bg-primary-dark/5 border border-primary-dark/10 dark:bg-white/5 dark:border-white/10 flex items-center justify-center text-primary-dark dark:text-white group-hover:scale-110 group-hover:bg-accent-pop group-hover:border-accent-pop group-hover:text-white transition-all duration-500 shadow-sm dark:shadow-lg">
-                                <s.icon className="w-7 h-7" />
+                            <div className="flex flex-col h-full justify-between">
+                                <div className="space-y-6">
+                                    <div className="w-12 h-12 rounded-xl bg-primary-dark/5 dark:bg-white/10 flex items-center justify-center text-primary-dark dark:text-white group-hover:bg-accent-pop group-hover:text-white transition-colors duration-500">
+                                        <s.icon className="w-6 h-6" />
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-primary-dark dark:text-white mb-2 transition-colors">{s.title}</h3>
+                                        <p className="text-primary-dark/70 dark:text-primary-light/60 leading-relaxed transition-colors">{s.desc}</p>
+                                    </div>
+                                </div>
+
+                                <div className="pt-8 flex items-center text-sm font-medium text-accent-pop opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                                    <span>Explore Solution</span>
+                                    <ArrowUpRight className="w-4 h-4 ml-1" />
+                                </div>
                             </div>
-                        </div>
 
-                        <h3 className="relative z-10 text-2xl font-bold text-primary-dark dark:text-white mb-4 group-hover:text-accent-pop transition-colors">{s.title}</h3>
-                        <p className="relative z-10 text-primary-dark/70 dark:text-primary-light/80 leading-relaxed text-lg group-hover:text-primary-dark dark:group-hover:text-white transition-colors">{s.desc}</p>
+                        </SpotlightCard>
                     </motion.div>
                 ))}
             </div>
