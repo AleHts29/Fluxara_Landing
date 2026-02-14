@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-primary-dark text-white font-sans antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-primary-dark/80 backdrop-blur-md border border-primary-light/20 shadow-lg;
+  }
+
+  .terminal-text {
+    @apply font-mono text-sm leading-relaxed;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(175, 202, 204, 0.5);
+  }
+}
