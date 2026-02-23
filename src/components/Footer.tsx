@@ -1,4 +1,5 @@
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -7,7 +8,7 @@ const Footer = () => {
                 <div className="text-center md:text-left">
                     <h4 className="font-bold text-white tracking-widest text-sm">FLUXARA</h4>
                     <p className="text-[10px] font-mono text-primary-light/50 mt-1">
-                        SYSTEM_ID: 8F2-A91 • <span className="hover:text-accent-pop cursor-pointer">PRIVACY_PROTOCOL</span>
+                        SYSTEM_ID: 8F2-A91 • <Link to="/politicas-de-seguridad" className="hover:text-accent-pop cursor-pointer transition-colors">PRIVACY_PROTOCOL</Link>
                     </p>
                 </div>
 
